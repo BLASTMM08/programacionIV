@@ -1,0 +1,5 @@
+Flask==3.0.3
+Flask-Mail==0.10.0
+Celery==5.4.0
+redis==5.0.7
+python-dotenv==1.0.1

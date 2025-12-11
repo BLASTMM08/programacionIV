@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuevo libro{% endblock %}
+
+{% block content %}
+  <section class="panel">
+    <h2>Agregar nuevo libro</h2>
+    <form method="post" class="form">
+      <label for="title">Título</label>
+      <input type="text" name="title" id="title" required />
+
+      <label for="author">Autor</label>
+      <input type="text" name="author" id="author" required />
+
+      <label for="year">Año de publicación</label>
+      <input type="number" name="year" id="year" min="0" required />
+
+      <label for="genre">Género</label>
+      <input type="text" name="genre" id="genre" />
+
+      <div class="form-actions">
+        <button type="submit" class="btn">Guardar</button>
+        <a href="{{ url_for('index') }}" class="link">Cancelar</a>
+      </div>
+    </form>
+  </section>
+{% endblock %}

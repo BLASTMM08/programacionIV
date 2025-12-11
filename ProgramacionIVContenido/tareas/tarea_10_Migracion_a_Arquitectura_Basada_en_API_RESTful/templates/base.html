@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Biblioteca personal{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <header>
+      <h1>Biblioteca personal</h1>
+      <nav>
+        <a href="{{ url_for('index') }}">Inicio</a>
+        <a href="{{ url_for('add_book') }}">Agregar libro</a>
+      </nav>
+      <form action="{{ url_for('search') }}" method="get" class="search-form">
+        <input
+          type="text"
+          name="q"
+          placeholder="Buscar por título, autor o género"
+          value="{{ request.args.get('q', '') }}"
+        />
+        <button type="submit">Buscar</button>
+      </form>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-container">
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+      <p>Aplicación de biblioteca personal - Uso de Jinja2 con Flask</p>
+    </footer>
+  </body>
+</html>

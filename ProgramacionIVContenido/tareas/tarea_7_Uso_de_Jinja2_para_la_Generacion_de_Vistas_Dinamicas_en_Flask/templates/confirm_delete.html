@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar libro{% endblock %}
+
+{% block content %}
+  <section class="panel danger">
+    <h2>Eliminar libro</h2>
+    <p>
+      ¿Estás seguro de que quieres eliminar <strong>{{ book.title }}</strong> de la biblioteca?
+    </p>
+    <form method="post" class="form form-inline">
+      <button type="submit" class="btn danger">Sí, eliminar</button>
+      <a href="{{ url_for('index') }}" class="link">Cancelar</a>
+    </form>
+  </section>
+{% endblock %}
